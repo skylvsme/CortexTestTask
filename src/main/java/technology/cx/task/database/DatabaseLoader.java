@@ -10,6 +10,8 @@ import technology.cx.task.entities.User;
 @Configuration
 public class DatabaseLoader {
 
+    //Класс отвечает за наполнение базы данных стартовыми записями
+
     private static  final Logger log = LoggerFactory.getLogger(DatabaseLoader.class);
 
     @Bean

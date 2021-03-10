@@ -1,18 +1,25 @@
 package technology.cx.task.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class User {
 
-    //Скрытие пароля при запросе сделано костылем (наверное)
-    //Я просто убрал метод getPassword
+    /*
 
-    //Погуглив я так и не нашёл, как выводить конкретные поля в JSON,
-    //оставляя нужные мне методы в сущности
+    Я кажется решил проблему с выводом пароля в JSON
+    Просто добавил @JsonIgnore к getPassword'у
+
+    Но мне понравилось другое решение проблемы на StackOverflow
+    https://stackoverflow.com/a/49207551
+    TODO: переделать скрытие пароля на понравивишийся вариант
+
+     */
 
     private @Id @GeneratedValue Long id;
     private String firstName;
@@ -55,5 +62,18 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @JsonIgnore
+    public String getPassword() {
+        return password;
+    }
+
+    public static class UserNotFoundException extends RuntimeException {
+
+        public UserNotFoundException(Long id) {
+            super("Couldn't find user with id " + id);
+        }
+
     }
 }

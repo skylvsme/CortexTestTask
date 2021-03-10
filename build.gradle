@@ -4,8 +4,8 @@ plugins {
     id 'java'
 }
 
-group = 'tech.cortex'
-version = '0.0.1-SNAPSHOT'
+group = 'technology.cx'
+version = '1.0'
 sourceCompatibility = '11'
 
 repositories {
